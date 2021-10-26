@@ -2,7 +2,7 @@
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 <p align="center">
-  <img src="https://github.com/Guilherme99/App_Carrinho_Compras/blob/master/assets/images/app.png" alt="App" height="400px" >
+  <img src="https://github.com/Guilherme99/App_Carrinho_Compras/blob/master/assets/images/appScreenshot.png" alt="App" height="400px" >
 </p>
 <p align="center">
     Print da tela do app.
