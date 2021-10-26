@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "38771689569",
+    "project_id": "slidy-1cc08",
+    "storage_bucket": "slidy-1cc08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38771689569:android:e833c534d8334c66ba8220",
+        "android_client_info": {
+          "package_name": "br.flutterando.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38771689569-kl93686o0gatavj6h791bd8hsgm8108p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.flutterando.login",
+            "certificate_hash": "c7511165d1d8cd2d6d09b90919598f739895681b"
+          }
+        },
+        {
+          "client_id": "38771689569-ddhkmuc76nsrbbuv4g5o2hj3jf9podfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB47sKYSa8_FSPlmviHiTtOtRsRapcRGz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38771689569-ddhkmuc76nsrbbuv4g5o2hj3jf9podfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
