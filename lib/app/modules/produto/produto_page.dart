@@ -38,7 +38,7 @@ class _ProdutoPageState extends ModularState<ProdutoPage, CompraController> {
           actions: [
             IconButton(
               onPressed: () {
-                Modular.to.pushReplacementNamed("/home");
+                controller.logoff();
               },
               icon: const Icon(Icons.exit_to_app_outlined),
             ),

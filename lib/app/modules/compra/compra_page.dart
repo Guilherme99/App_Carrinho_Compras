@@ -140,80 +140,73 @@ class _CompraPageState extends ModularState<CompraPage, CompraController> {
                   ]   */
             ),
             margin: const EdgeInsets.all(10.0),
-            child: SingleChildScrollView(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: controller.products.length - 1,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemBuilder: (_, i) => GestureDetector(
-                  onTap: () {
-                    Modular.to.pushNamed(
-                      "/produto/${controller.products[i].id}",
-                      arguments: ProductModelRoot(
-                          title: controller.products[i].title,
-                          price: controller.products[i].price,
-                          image: controller.products[i].image,
-                          id: controller.products[i].id,
-                          category: controller.products[i].category,
-                          description: controller.products[i].description),
-                    );
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 200.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: Image.network(
-                                  controller.products[i].image.toString(),
-                                  height: 60,
-                                )),
-                            Text(
-                              controller.products[i].title,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+            child: GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              children: List.generate(controller.products.length, (i) {
+                return Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Modular.to.pushNamed(
+                        "/produto/${controller.products[i].id}",
+                        arguments: ProductModelRoot(
+                            title: controller.products[i].title,
+                            price: controller.products[i].price,
+                            image: controller.products[i].image,
+                            id: controller.products[i].id,
+                            category: controller.products[i].category,
+                            description: controller.products[i].description),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      width: 200,
+                      height: 200.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Image.network(
+                                controller.products[i].image.toString(),
+                                height: 60,
+                              )),
+                          Text(
+                            controller.products[i].title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            Text("R" +
-                                String.fromCharCodes(Runes('\u0024')) +
-                                " " +
-                                controller.products[i].price
-                                    .toStringAsFixed(2)),
-                            ElevatedButton(
-                                onPressed: () {
-                                  controller.addProductCarrinho(
-                                      controller.products[i]);
-                                  Modular.to.pushReplacementNamed("/carrinho");
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(140, 20),
-                                    primary: Colors.blue),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text("Adicionar"),
-                                    Icon(Icons.add),
-                                  ],
-                                ))
-                          ],
-                        ),
-                      )
-                    ],
+                          ),
+                          Text("R" +
+                              String.fromCharCodes(Runes('\u0024')) +
+                              " " +
+                              controller.products[i].price.toStringAsFixed(2)),
+                          ElevatedButton(
+                              onPressed: () {
+                                controller
+                                    .addProductCarrinho(controller.products[i]);
+                                Modular.to.pushReplacementNamed("/carrinho");
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(140, 20),
+                                  primary: Colors.blue),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  Text("Adicionar"),
+                                  Icon(Icons.add),
+                                ],
+                              ))
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                separatorBuilder: (BuildContext context, int index) =>
-                    Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
-                  height: 1,
-                  color: Colors.black54,
-                ),
-              ),
+                );
+              }),
             ),
           ),
         ],

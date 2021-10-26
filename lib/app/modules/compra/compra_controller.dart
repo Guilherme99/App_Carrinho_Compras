@@ -11,6 +11,7 @@ part 'compra_controller.g.dart';
 class CompraController = _CompraControllerBase with _$CompraController;
 
 abstract class _CompraControllerBase with Store {
+  List<ProductModelRoot> filterProd = [];
   List<ProductModelRoot> products = [];
   final CarrinhoStore _carrinhoStore;
   final ProductRepository _repository;
@@ -28,7 +29,8 @@ abstract class _CompraControllerBase with Store {
   Future start() async {
     state.value = HomeState.loading;
     try {
-      products = await _repository.fetchProducts();
+      filterProd = await _repository.fetchProducts();
+      products = filterProd.where((i) => i.id != 5).toList();
       state.value = HomeState.success;
     } catch (e) {
       state.value = HomeState.error;

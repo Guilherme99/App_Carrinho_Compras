@@ -15,46 +15,53 @@ class _CarrinhoPageState
     extends ModularState<CarrinhoPage, CarrinhoProdutosController> {
   widgetAmount() {
     return controller.listaProdutos.isEmpty
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Ooops! 😓",
-                style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Não há nada aqui! Adicione algum produto! 🤗",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
+        ? SizedBox(
+            height: MediaQuery.of(context).size.height / 1.2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    const Text(
+                      "Ooops! 😓",
+                      style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      "Não há nada aqui! Adicione algum produto! 🤗",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        Modular.to.pushReplacementNamed('/compra');
+                      },
+                      height: 45,
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      color: Colors.orange.shade400,
+                      child: Text(
+                        "Iniciar compras",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              MaterialButton(
-                onPressed: () {
-                  Modular.to.pushReplacementNamed('/compra');
-                },
-                height: 45,
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                color: Colors.orange.shade400,
-                child: Text(
-                  "Iniciar compras",
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-            ],
+              ],
+            ),
           )
         : Observer(
             builder: (_) => Container(
@@ -106,6 +113,8 @@ class _CarrinhoPageState
             builder: (_) => ListView.separated(
               shrinkWrap: true,
               itemCount: controller.listaProdutos.length,
+              scrollDirection: Axis.vertical,
+              physics: NeverScrollableScrollPhysics(),
               itemBuilder: (_, i) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
@@ -130,11 +139,8 @@ class _CarrinhoPageState
                               child: Image.network(
                                 controller.listaProdutos[i].produto.image,
                                 height: 60,
+                                width: 60,
                               )),
-                          Container(
-                            width: 1,
-                            color: Colors.black54,
-                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -233,7 +239,7 @@ class _CarrinhoPageState
         actions: [
           IconButton(
             onPressed: () {
-              Modular.to.pushReplacementNamed("/home");
+              controller.logoff();
             },
             icon: const Icon(Icons.exit_to_app_outlined),
           ),
@@ -250,10 +256,8 @@ class _CarrinhoPageState
               backgroundColor: Colors.blue,
             ),
       body: SingleChildScrollView(
-          child: Container(
-        child: Column(
-          children: [widgetSuccess(), widgetAmount()],
-        ),
+          child: Column(
+        children: [widgetSuccess(), widgetAmount()],
       )),
     );
   }

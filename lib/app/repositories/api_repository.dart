@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class ProductRepository {
   late Dio dio;
-  final url = 'https://fakestoreapi.com/products?limit=5';
+  final url = 'https://fakestoreapi.com/products?limit=10';
 
   ProductRepository([Dio? client]) : dio = client ?? Dio();
 
