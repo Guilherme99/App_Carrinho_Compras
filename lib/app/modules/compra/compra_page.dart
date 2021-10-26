@@ -161,7 +161,7 @@ class _CompraPageState extends ModularState<CompraPage, CompraController> {
                       );
                     },
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       width: 200,
                       height: 200.0,
                       child: Column(
