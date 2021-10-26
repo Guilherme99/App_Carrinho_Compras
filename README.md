@@ -30,7 +30,7 @@ Para instalar o projeto, siga estas etapas:
 
 ### Clone o repositório:
 ```
-  git clone https://github.com/Guilherme99/App-Maps.git
+  git clone https://github.com/Guilherme99/App_Carrinho_Compras.git
 ```
 
 ### Navegue até a pasta, e instale as dependências:
